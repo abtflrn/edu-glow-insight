@@ -36,7 +36,7 @@ let cache: Promise<EduData> | null = null;
 
 export function loadEduData(): Promise<EduData> {
   if (cache) return cache;
-  cache = fetch(eduAsset.url)
+  cache = fetch(EDU_URL)
     .then((r) => r.json() as Promise<EduRaw>)
     .then((raw) => {
       const cityToProvince: Record<number, number> = {};
