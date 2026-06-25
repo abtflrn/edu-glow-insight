@@ -1,4 +1,4 @@
-import eduAsset from "@/data/edu.json.asset.json";
+const EDU_URL = "/data/edu.json";
 
 export interface EduRaw {
   provinces: string[];
