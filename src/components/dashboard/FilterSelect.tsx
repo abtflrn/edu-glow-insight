@@ -10,6 +10,11 @@ interface Props {
 }
 
 export function FilterSelect({ label, value, options, onChange, allLabel, accent = "pink" }: Props) {
+  const ring =
+    accent === "pink"
+      ? "hover:border-pink focus:ring-pink"
+      : "hover:border-blue focus:ring-blue";
+  const icon = accent === "pink" ? "text-pink" : "text-blue";
   return (
     <div className="flex min-w-0 flex-1 flex-col gap-1.5">
       <label className="px-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
@@ -19,7 +24,7 @@ export function FilterSelect({ label, value, options, onChange, allLabel, accent
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className={`w-full appearance-none truncate rounded-2xl border border-border bg-card py-3 pl-4 pr-10 text-sm font-medium text-foreground shadow-card outline-none transition-all hover:border-${accent} focus:ring-2 focus:ring-${accent}`}
+          className={`w-full appearance-none truncate rounded-2xl border border-border bg-card py-3 pl-4 pr-10 text-sm font-medium text-foreground shadow-card outline-none transition-all focus:ring-2 ${ring}`}
         >
           <option value="">{allLabel}</option>
           {options.map((o) => (
@@ -29,7 +34,7 @@ export function FilterSelect({ label, value, options, onChange, allLabel, accent
           ))}
         </select>
         <ChevronDown
-          className={`pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-${accent}`}
+          className={`pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 ${icon}`}
         />
       </div>
     </div>
